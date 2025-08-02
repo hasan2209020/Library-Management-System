@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Library Management System</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>📚 Library Management System</header>
+
+<nav>
+  <a href="#" onclick="showSection('dashboard')">Dashboard</a>
+  <a href="#" onclick="showSection('addBook')">Add Book</a>
+  <a href="#" onclick="showSection('addMember')">Add Member</a>
+  <a href="#" onclick="showSection('issueBook')">Issue Book</a>
+  <a href="#" onclick="showSection('returnBook')">Return Book</a>
+</nav>
+
+<div class="main">
+  <!-- Dashboard -->
+  <div id="dashboard" class="section visible">
+    <div class="hero-section">
+      <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794" class="hero-image active" alt="Books on Shelf">
+      <img src="https://cdn.pixabay.com/photo/2015/11/19/21/11/book-1052014_960_720.jpg" class="hero-image" alt="Library 2">
+      <img src="https://cdn.pixabay.com/photo/2016/09/10/17/18/book-1659717_960_720.jpg" class="hero-image" alt="Library 3">
+    </div>
+
+    <h2>📚 Welcome to the Library Dashboard</h2>
+
+    <div class="stats-container">
+      <div class="stat-card">
+        <h3>Total Books</h3>
+        <p id="totalBooks">3</p>
+      </div>
+      <div class="stat-card">
+        <h3>Members</h3>
+        <p>150</p>
+      </div>
+      <div class="stat-card">
+        <h3>Books Issued</h3>
+        <p>45</p>
+      </div>
+    </div>
+
+    <div class="recent-books">
+      <h3>📖 Recently Added Books</h3>
+      <div class="book-carousel">
+        <div>
+          <img src="https://images-na.ssl-images-amazon.com/images/I/91bYsX41DVL._SL1500_.jpg"
+               alt="Atomic Habits" onclick="alert('Atomic Habits by James Clear')">
+          <span>Atomic Habits</span>
+        </div>
+        <div>
+          <img src="https://m.media-amazon.com/images/I/81iqZ2HHD-L.jpg"
+               alt="Harry Potter" onclick="alert('Harry Potter by J.K. Rowling')">
+          <span>Harry Potter</span>
+        </div>
+        <div>
+          <img src="https://m.media-amazon.com/images/I/71aFt4+OTOL.jpg"
+               alt="The Alchemist" onclick="alert('The Alchemist by Paulo Coelho')">
+          <span>The Alchemist</span>
+        </div>
+        <div>
+          <img src="https://m.media-amazon.com/images/I/71kxa1-0mfL.jpg"
+ 
+               alt="1984" onclick="alert('1984 by George Orwell')">
+          <span>1984</span>
+        </div>
+        <div>
+          <img src="https://m.media-amazon.com/images/I/71KilybDOoL.jpg" 
+               alt="Pride and Prejudice" onclick="alert('Pride and Prejudice by Jane Austen')">
+          <span>Pride and Prejudice</span>
+        </div>
+        <div>
+          <img src="https://m.media-amazon.com/images/I/81WcnNQ-TBL.jpg" 
+               alt="To Kill a Mockingbird" onclick="alert('To Kill a Mockingbird by Harper Lee')">
+          <span>To Kill a Mockingbird</span>
+        </div>
+      </div>
+    </div>
+
+    <h3>✨ Key Features:</h3>
+    <ul>
+      <li>📘 Add, Edit, and View Books</li>
+      <li>👤 Register New Members</li>
+      <li>📥 Issue and 📤 Return Books</li>
+      <li>🔍 Search and Filter Books</li>
+      <li>🧾 Simple and User-Friendly UI</li>
+    </ul>
+
+    <button onclick="showSection('addBook')" style="margin-top: 20px;">➕ Add New Book</button>
+  </div>
+
+  <!-- Add Book -->
+  <div id="addBook" class="section">
+    <h2>Add New Book</h2>
+    <input type="text" id="bookTitle" placeholder="Book Title">
+    <input type="text" id="bookAuthor" placeholder="Author">
+    <input type="text" id="bookISBN" placeholder="ISBN">
+    <input type="number" id="bookCopies" placeholder="Total Copies">
+    <input type="text" id="bookImage" placeholder="Image URL">
+    <button onclick="addBook()">Add Book</button>
+
+    <h3>📚 Book List</h3>
+    <input type="text" id="searchInput" placeholder="🔍 Search by title or author..." onkeyup="filterBooks()">
+
+    <table id="bookTable">
+      <thead>
+        <tr>
+          <th>Cover</th>
+          <th>Title</th>
+          <th>Author</th>
+          <th>ISBN</th>
+          <th>Copies</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><img class="book-cover" src="https://images-na.ssl-images-amazon.com/images/I/91bYsX41DVL._SL1500_.jpg" alt="Atomic Habits"></td>
+          <td>Atomic Habits</td>
+          <td>James Clear</td>
+          <td>9780735211292</td>
+          <td>10</td>
+        </tr>
+        <tr>
+          <td><img class="book-cover" src="https://m.media-amazon.com/images/I/81iqZ2HHD-L.jpg" alt="Harry Potter"></td>
+          <td>Harry Potter and the Sorcerer's Stone</td>
+          <td>J.K. Rowling</td>
+          <td>9780439708180</td>
+          <td>15</td>
+        </tr>
+        <tr>
+          <td><img class="book-cover" src="https://m.media-amazon.com/images/I/71aFt4+OTOL.jpg" alt="The Alchemist"></td>
+          <td>The Alchemist</td>
+          <td>Paulo Coelho</td>
+          <td>9780061122415</td>
+          <td>12</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Add Member -->
+  <div id="addMember" class="section">
+    <h2>Add New Member</h2>
+    <input type="text" placeholder="Member Name">
+    <input type="email" placeholder="Email">
+    <input type="text" placeholder="Phone Number">
+    <button onclick="alert('Member Added!')">Add Member</button>
+  </div>
+
+  <!-- Issue Book -->
+  <div id="issueBook" class="section">
+    <h2>Issue Book</h2>
+    <input type="text" placeholder="Member ID">
+    <input type="text" placeholder="Book ID">
+    <input type="date" placeholder="Return Date">
+    <button onclick="alert('Book Issued!')">Issue Book</button>
+  </div>
+
+  <!-- Return Book -->
+  <div id="returnBook" class="section">
+    <h2>Return Book</h2>
+    <input type="text" placeholder="Member ID">
+    <input type="text" placeholder="Book ID">
+    <button onclick="alert('Book Returned!')">Return Book</button>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
